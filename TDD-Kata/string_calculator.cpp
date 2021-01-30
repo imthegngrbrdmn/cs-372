@@ -6,5 +6,6 @@ int stringCalculator(std::string input)
 	{
 		return 0;
 	}
+	return std::stoi(input);
 }
 
