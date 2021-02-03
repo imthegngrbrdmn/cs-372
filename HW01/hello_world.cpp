@@ -1,6 +1,6 @@
 #include "hello_world.h"
 
-void helloWorld()
+void helloWorld(int input)
 {
-	std::cout << "Hello World";
+	std::cout << "Hello World " << input;
 }

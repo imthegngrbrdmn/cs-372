@@ -2,6 +2,6 @@
 
 int main(int argc, char** argv)
 {
-	helloWorld();
+	helloWorld(7);
 	return 0;
 }

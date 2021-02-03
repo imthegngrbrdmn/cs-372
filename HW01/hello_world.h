@@ -3,6 +3,6 @@
 
 #include <iostream>
 
-void helloWorld();
+void helloWorld(int input);
 
 #endif
