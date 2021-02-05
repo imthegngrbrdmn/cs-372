@@ -1,35 +1,28 @@
 #include "string_calculator.h"
 #include <iostream>
+#include <vector>
 int stringCalculator(std::string input)
 {
 	if (input == "")
 	{
 		return 0;
 	}
-	//Two numbers, comma delimited, returns the sum
-	std::string left = "";
-	std::string right = "";
-	bool split = false;
+	std::vector<std::string> numbers;
+	int index = 0;
 	for (int i = 0; i < input.length(); ++i)
 	{
-		if(!split && (','==input[i] || '\n'==input[i]))
+		if((','==input[i] || '\n'==input[i]))
 		{
-			split = true;
+			index++;
+			numbers[index] = "";
 			continue;
 		}
-		if (!split)
-		{
-			left += input[i];
-		}
-		else
-		{
-			right += input[i];
-		}
+		numbers[index] += input[i];
 	}
-	if (split)
-	{
-		return (std::stoi(left) + std::stoi(right));
+	int output = 0;
+	for(auto number: numbers){
+		output += std::stoi(number);
 	}
-	return std::stoi(input);
+	return output;
 }
 
