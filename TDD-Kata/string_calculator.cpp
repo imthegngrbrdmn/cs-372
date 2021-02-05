@@ -7,14 +7,14 @@ int stringCalculator(std::string input)
 	{
 		return 0;
 	}
-	std::vector<std::string> numbers;
+	std::vector<std::string> numbers = {""};
 	int index = 0;
 	for (int i = 0; i < input.length(); ++i)
 	{
 		if((','==input[i] || '\n'==input[i]))
 		{
 			index++;
-			numbers[index] = "";
+			numbers.push_back("");
 			continue;
 		}
 		numbers[index] += input[i];
