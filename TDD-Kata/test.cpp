@@ -19,4 +19,5 @@ TEST_CASE("Two numbers, comma delimited, returns the sum"){
 	REQUIRE(stringCalculator("2,2") == 4);
 	REQUIRE(stringCalculator("50,50") == 100);
 	REQUIRE(stringCalculator("0,0") == 0);
+	REQUIRE(stringCalculator("150,100") == 250);
 }

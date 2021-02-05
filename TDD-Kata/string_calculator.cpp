@@ -1,5 +1,5 @@
 #include "string_calculator.h"
-
+#include <iostream>
 int stringCalculator(std::string input)
 {
 	if (input == "")
@@ -9,27 +9,27 @@ int stringCalculator(std::string input)
 	//Two numbers, comma delimited, returns the sum
 	std::string left = "";
 	std::string right = "";
-	std::string delimeter = ",";
+	const char delimeter = ',';
 	bool split = false;
-	for (int i = 0; i < input.length(); i++)
+	for (int i = 0; i < input.length(); ++i)
 	{
-		if(!split && delimeter.compare(input.substr(i,i+1)) == 0)
+		if(!split && delimeter==input[i])
 		{
 			split = true;
 			continue;
 		}
 		if (!split)
 		{
-			left += input.substr(i, i + 1);
+			left += input[i];
 		}
 		else
 		{
-			right += input.substr(i, i + 1);
+			right += input[i];
 		}
 	}
 	if (split)
 	{
-		return std::stoi(left) + std::stoi(right);
+		return (std::stoi(left) + std::stoi(right));
 	}
 	return std::stoi(input);
 }
