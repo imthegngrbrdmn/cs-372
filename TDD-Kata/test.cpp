@@ -21,3 +21,10 @@ TEST_CASE("Two numbers, comma delimited, returns the sum"){
 	REQUIRE(stringCalculator("0,0") == 0);
 	REQUIRE(stringCalculator("150,100") == 250);
 }
+TEST_CASE("Two numbers, newline delimited, returns the sum"){
+	REQUIRE(stringCalculator("1\n2") == 3);
+	REQUIRE(stringCalculator("2\n2") == 4);
+	REQUIRE(stringCalculator("50\n50") == 100);
+	REQUIRE(stringCalculator("0\n0") == 0);
+	REQUIRE(stringCalculator("150\n100") == 250);
+}
