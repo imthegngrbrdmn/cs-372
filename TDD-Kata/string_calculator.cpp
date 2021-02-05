@@ -9,11 +9,10 @@ int stringCalculator(std::string input)
 	//Two numbers, comma delimited, returns the sum
 	std::string left = "";
 	std::string right = "";
-	const char delimeter = ',';
 	bool split = false;
 	for (int i = 0; i < input.length(); ++i)
 	{
-		if(!split && delimeter==input[i])
+		if(!split && (','==input[i] || '\n'==input[i]))
 		{
 			split = true;
 			continue;
