@@ -10,6 +10,10 @@ int strCalc(std::string input)
     std::size_t i = 0;
     for (char c : input)
     {
+        if (c == '-')
+        {
+            throw std::logic_error("Negative numbers are not allowed");
+        }
         if (c == ',' || c == '\n')
         {
             ++i;

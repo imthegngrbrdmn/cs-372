@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 int strCalc(std::string input);
 
