@@ -38,9 +38,6 @@ TEST_CASE("A single number returns the value")
     SUBCASE("three or more digit ints")
     {
         REQUIRE(strCalc("113") == 113);
-        REQUIRE(strCalc("1234") == 1234);
-        REQUIRE(strCalc("54321") == 54321);
-        REQUIRE(strCalc("1234567890") == 1234567890);
     }
 }
 TEST_CASE("Two numbers, comma delimited, returns the sum")
@@ -64,13 +61,9 @@ TEST_CASE("Two numbers, comma delimited, returns the sum")
     SUBCASE("Three or more digits")
     {
         REQUIRE(strCalc("111,222") == 333);
-        REQUIRE(strCalc("1234,1234") == 2468);
-        REQUIRE(strCalc("1567,2289") == 3856);
-        REQUIRE(strCalc("200000,345678") == 545678);
     }
     SUBCASE("Mixes")
     {
-        REQUIRE(strCalc("10000,45") == 10045);
         REQUIRE(strCalc("1,1000") == 1001);
         REQUIRE(strCalc("123,1") == 124);
     }
@@ -96,14 +89,9 @@ TEST_CASE("Two numbers, newline delimited, returns the sum")
     SUBCASE("Three or more digits")
     {
         REQUIRE(strCalc("111\n222") == 333);
-        REQUIRE(strCalc("1234\n1234") == 2468);
-        REQUIRE(strCalc("1567\n2289") == 3856);
-        REQUIRE(strCalc("200000\n345678") == 545678);
     }
     SUBCASE("Mixes")
     {
-        REQUIRE(strCalc("10000\n45") == 10045);
-        REQUIRE(strCalc("1\n1000") == 1001);
         REQUIRE(strCalc("123\n1") == 124);
     }
 }
@@ -128,13 +116,9 @@ TEST_CASE("Three numbers, delimited either way, returns the sum")
     SUBCASE("Three or more digits")
     {
         REQUIRE(strCalc("111\n111,111") == 333);
-        REQUIRE(strCalc("1234\n1000,234") == 2468);
-        REQUIRE(strCalc("1000,567\n2289") == 3856);
-        REQUIRE(strCalc("200000\n345000,678") == 545678);
     }
     SUBCASE("Mixes")
     {
-        REQUIRE(strCalc("10000\n40,5") == 10045);
         REQUIRE(strCalc("1\n400,600") == 1001);
         REQUIRE(strCalc("100,23\n1") == 124);
     }
@@ -187,6 +171,21 @@ TEST_CASE("Negative numbers throw an exception")
             throws = true;
         }
         REQUIRE(throws);
+    }
+}
+TEST_CASE("Numbers greater than 1000 are ignored")
+{
+    SUBCASE("Single numbers")
+    {
+        REQUIRE(strCalc("1000") == 1000);
+        REQUIRE(strCalc("1001") == 0);
+        REQUIRE(strCalc("10000000") == 0);
+    }
+    SUBCASE("Sums")
+    {
+        REQUIRE(strCalc("1\n4000,600") == 601);
+        REQUIRE(strCalc("100,23\n10001") == 123);
+        REQUIRE(strCalc("1001,23\n1") == 24);
     }
 }
 
