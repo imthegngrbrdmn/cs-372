@@ -139,6 +139,56 @@ TEST_CASE("Three numbers, delimited either way, returns the sum")
         REQUIRE(strCalc("100,23\n1") == 124);
     }
 }
+TEST_CASE("Negative numbers throw an exception")
+{
+    bool throws;
+    SUBCASE("Single numbers")
+    {
+        try
+        {
+            strCalc("-1");
+            throws = false;
+        }
+        catch (...)
+        {
+            throws = true;
+        }
+        REQUIRE(throws);
+        try
+        {
+            strCalc("-123");
+            throws = false;
+        }
+        catch (...)
+        {
+            throws = true;
+        }
+        REQUIRE(throws);
+    }
+    SUBCASE("Sums")
+    {
+        try
+        {
+            strCalc("-1,-7");
+            throws = false;
+        }
+        catch (...)
+        {
+            throws = true;
+        }
+        REQUIRE(throws);
+        try
+        {
+            strCalc("1,-8");
+            throws = false;
+        }
+        catch (...)
+        {
+            throws = true;
+        }
+        REQUIRE(throws);
+    }
+}
 
 int main(int argc, char** argv)
 {
