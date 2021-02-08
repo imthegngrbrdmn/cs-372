@@ -25,6 +25,7 @@ int strCalc(std::string input)
     int sum = 0;
     for (std::string num : nums)
     {
+        if (std::stoi(num) > 1000) continue;
         sum += std::stoi(num);
     }
     return sum;
