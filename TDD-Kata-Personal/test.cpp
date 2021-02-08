@@ -188,6 +188,25 @@ TEST_CASE("Numbers greater than 1000 are ignored")
         REQUIRE(strCalc("1001,23\n1") == 24);
     }
 }
+TEST_CASE("A single char delimiter can be defined on the first line")
+{
+    SUBCASE("Two-Number Sums")
+    {
+        REQUIRE(strCalc("%\n7%9") == 16);
+        REQUIRE(strCalc("|\n1|1") == 2);
+    }
+    SUBCASE("Special Delimiters")
+    {
+        REQUIRE(strCalc(" \n2 2") == 4);
+        REQUIRE(strCalc("\t\n2\t2") == 4);
+        REQUIRE(strCalc("\\\n2\\2") == 4);
+    }
+    SUBCASE("Duplicate Delimiters")
+    {
+        REQUIRE(strCalc(",\n2,2") == 4);
+        REQUIRE(strCalc("\n\n3\n3") == 6);
+    }
+}
 
 int main(int argc, char** argv)
 {
