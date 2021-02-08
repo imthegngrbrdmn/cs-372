@@ -107,6 +107,38 @@ TEST_CASE("Two numbers, newline delimited, returns the sum")
         REQUIRE(strCalc("123\n1") == 124);
     }
 }
+TEST_CASE("Three numbers, delimited either way, returns the sum")
+{
+    SUBCASE("Single digits")
+    {
+        REQUIRE(strCalc("0\n1,0") == 1);
+        REQUIRE(strCalc("0,1\n1") == 2);
+        REQUIRE(strCalc("1\n1,1") == 3);
+        REQUIRE(strCalc("2\n1,2") == 5);
+        REQUIRE(strCalc("3\n1,4") == 8);
+    }
+    SUBCASE("Double digits")
+    {
+        REQUIRE(strCalc("10\n1,10") == 21);
+        REQUIRE(strCalc("13\n16,15") == 44);
+        REQUIRE(strCalc("10,11\n12") == 33);
+        REQUIRE(strCalc("40,32\n43") == 115);
+        REQUIRE(strCalc("32,31\n75") == 138);
+    }
+    SUBCASE("Three or more digits")
+    {
+        REQUIRE(strCalc("111\n111,111") == 333);
+        REQUIRE(strCalc("1234\n1000,234") == 2468);
+        REQUIRE(strCalc("1000,567\n2289") == 3856);
+        REQUIRE(strCalc("200000\n345000,678") == 545678);
+    }
+    SUBCASE("Mixes")
+    {
+        REQUIRE(strCalc("10000\n40,5") == 10045);
+        REQUIRE(strCalc("1\n400,600") == 1001);
+        REQUIRE(strCalc("100,23\n1") == 124);
+    }
+}
 
 int main(int argc, char** argv)
 {
