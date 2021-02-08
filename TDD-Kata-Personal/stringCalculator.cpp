@@ -6,5 +6,22 @@ int strCalc(std::string input)
     {
         return 0;
     }
-    return std::stoi(input);
+    std::vector<std::string> nums = { "" };
+    std::size_t i = 0;
+    for (char c : input)
+    {
+        if (c == ',')
+        {
+            ++i;
+            nums.push_back("");
+            continue;
+        }
+        nums[i] += c;
+    }
+    int sum = 0;
+    for (std::string num : nums)
+    {
+        sum += std::stoi(num);
+    }
+    return sum;
 }
