@@ -2,5 +2,9 @@
 
 int strCalc(std::string input)
 {
-    return 0;
+    if (input.empty())
+    {
+        return 0;
+    }
+    return std::stoi(input);
 }

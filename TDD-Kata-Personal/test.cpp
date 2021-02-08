@@ -9,14 +9,40 @@
 
 const std::string test_suite_name = "CS-372 TDD Kata - String Calculator";
 
-TEST_CASE("Part 1")
+TEST_CASE("An empty string returns zero")
 {
-    SUBCASE("An empty string returns zero")
+    SUBCASE("\"\"==0")
     {
         REQUIRE(strCalc("") == 0);
     }
 }
+TEST_CASE("A single number returns the value")
+{
+    SUBCASE("single digit ints")
+    {
 
+        REQUIRE(strCalc("0") == 0);
+        REQUIRE(strCalc("1") == 1);
+        REQUIRE(strCalc("3") == 3);
+        REQUIRE(strCalc("5") == 5);
+        REQUIRE(strCalc("8") == 8);
+    }
+    SUBCASE("two digit ints")
+    {
+        REQUIRE(strCalc("10") == 10);
+        REQUIRE(strCalc("63") == 63);
+        REQUIRE(strCalc("56") == 56);
+        REQUIRE(strCalc("79") == 79);
+        REQUIRE(strCalc("13") == 13);
+    }
+    SUBCASE("three or more digit ints")
+    {
+        REQUIRE(strCalc("113") == 113);
+        REQUIRE(strCalc("1234") == 1234);
+        REQUIRE(strCalc("54321") == 54321);
+        REQUIRE(strCalc("1234567890") == 1234567890);
+    }
+}
 
 int main(int argc, char** argv)
 {
