@@ -7,14 +7,14 @@
   Learn more about a new feature of C++ (since C++11).
   I am working on using Lambda Functions.
 */
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <cstdint>
 #include <random>
 
-int main(int argc, char**argv)
-{
+int main(int argc, char**argv) {
   // Create Vector of Fibonacci Numbers that fit into 64-bit unsigned int
   std::vector<uint_fast64_t> fibs{0,1};
   for(std::size_t i = 0; i < 93; ++i) {
