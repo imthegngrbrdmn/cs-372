@@ -3,7 +3,7 @@
   Created:  2020-02-20
   Modified: 2020-02-21
   Project:  CS-372/Homework03
-  
+
   Learn more about a new feature of C++ (since C++11).
   I am working on using Lambda Functions.
 */
@@ -20,7 +20,7 @@ int main(int argc, char**argv) {
   for(std::size_t i = 0; i < 93; ++i) {
     fibs.push_back(fibs[i]+fibs[i+1]);
   }
-  
+
   // Randomize Vector
   std::random_device rd;
   std::mt19937 gen(rd());
@@ -31,4 +31,3 @@ int main(int argc, char**argv) {
   std::for_each(fibs.begin(), fibs.end(), [](uint_fast64_t& n) { std::cout << n << std::endl; });
 	return 0;
 }
-
